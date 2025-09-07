@@ -1,4 +1,210 @@
+
 html {
   color-scheme: light;
   background-color: white;
+}
+
+:root {
+  --color-orange: #FF6B35;
+  --color-blue: #4A90E2;
+  --color-green: #7ED321;
+  --color-purple: #9013FE;
+  
+  /* New palette for Levels Page */
+  --color-cream: #FFFBF2;
+  --color-bright-green: #96E072;
+  --color-green-dark: #63C132;
+  --color-green-shadow: rgba(150, 224, 114, 0.4);
+  --color-orange-start: #FFB347;
+  --color-orange-end: #FF8C00;
+  --color-orange-shadow: rgba(255, 140, 0, 0.4);
+  --color-purple-start: #A060FF;
+  --color-purple-end: #7B2BFF;
+  --color-purple-shadow: rgba(123, 43, 255, 0.4);
+  --color-grey-locked: #D1D5DB;
+  --color-grey-shadow: rgba(168, 168, 168, 0.4);
+  --color-path: #DCD9D4;
+  --color-text-dark: #3F3F46;
+  --color-text-light: #6B7280;
+  --color-progress-bg: #E5E7EB;
+  --color-progress-fill: #FFA500;
+}
+
+.bg-color-orange { background-color: var(--color-orange); }
+.bg-color-blue { background-color: var(--color-blue); }
+.bg-color-green { background-color: var(--color-green); }
+.bg-color-purple { background-color: var(--color-purple); }
+
+.text-color-orange { color: var(--color-orange); }
+.text-color-blue { color: var(--color-blue); }
+.text-color-green { color: var(--color-green); }
+.text-color-purple { color: var(--color-purple); }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s infinite;
+}
+
+.onboarding-bg {
+  background: radial-gradient(circle, #a8e6cf 0%, #dcedc1 100%);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.onboarding-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px; /* Increased touch target */
+  padding: 0 32px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.onboarding-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.onboarding-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.onboarding-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5), 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* New Styles for Levels Page */
+.levels-page-bg {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(var(--color-path) 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.topic-card {
+  background-color: var(--color-bright-green);
+  border: 3px solid var(--color-green-dark);
+  box-shadow: 0 8px 16px var(--color-green-shadow);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--color-green-shadow);
+}
+
+.progress-bar-bg {
+  background-color: var(--color-progress-bg);
+  border-radius: 9999px;
+  overflow: hidden;
+  height: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.progress-bar-fill {
+  background-color: var(--color-progress-fill);
+  height: 100%;
+}
+
+.milestone-node {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid white;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.milestone-node:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.milestone-node.completed {
+  background: linear-gradient(135deg, var(--color-orange-start), var(--color-orange-end));
+  box-shadow: 0 4px 12px var(--color-orange-shadow);
+}
+
+.milestone-node.locked {
+  background-color: var(--color-grey-locked);
+  box-shadow: 0 4px 12px var(--color-grey-shadow);
+  cursor: not-allowed;
+}
+
+.milestone-node.locked:hover {
+  transform: none;
+}
+
+.milestone-node.current {
+  width: 80px;
+  height: 80px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--color-purple-start), var(--color-purple-end));
+  box-shadow: 0 6px 16px var(--color-purple-shadow);
+  animation: pulse 2s infinite;
+}
+
+.start-lesson-label {
+  background-color: var(--color-text-dark);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(123, 43, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(123, 43, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(123, 43, 255, 0);
+  }
+}
+
+/* New Styles for LessonOne */
+.lesson-instruction-box {
+  background-color: var(--color-cream);
+  border: 2px solid var(--color-path);
 }
